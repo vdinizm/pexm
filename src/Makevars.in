@@ -1,0 +1,13 @@
+####################################################################################################
+#  This Makevars.in is based on similar files taken as examples from the packages runjags and rjags.
+#  In order to force the package to compile assuming a given JAGS version, use the 
+#  JAGS_MAJOR_FORCED environmental variable. This should not be necessary on unix.
+####################################################################################################
+
+PKG_CPPFLAGS = -I"@JAGS_INCLUDE@" -D JAGS_MAJOR_FORCED=0$(JAGS_MAJOR_VERSION) -D JAGS_MAJOR_ASSUMED=0
+PKG_LIBS=-L@JAGS_LIB@ -ljags -ljrmath @JAGS_RPATH@
+
+OBJECTS = functions/DPexFun.o functions/HCPexFun.o functions/HPexFun.o functions/PPexFun.o functions/QPexFun.o distributions/DPex.o init.o pexm.o
+
+
+

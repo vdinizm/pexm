@@ -1,0 +1,12 @@
+=============================================
+R package "pexm". 
+It is intended to load the JAGS module "pexm".
+The module provides distribution and related 
+functions for the random variable 
+T ~ PE(lambda,tau).
+PE = Piecewise Exponential.
+=============================================
+
+Version 1.0.0: This is the first version of the package.
+
+

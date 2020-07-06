@@ -1,0 +1,16 @@
+#!/bin/sh
+
+rm -f src/Makevars
+rm -f config.*
+rm -rf autom4te.cache
+rm -f config.log
+rm -f config.status
+
+rm -f src/init.o
+rm -f src/pexm.o
+rm -f src/pexm.so
+
+rm -f src/distributions/*.o
+rm -f src/functions/*.o
+
+exit 0
