@@ -10,13 +10,13 @@ The module provides the tools to work with the Piecewise Exponential (PE) distri
 the corresponding Markov Chain Monte Carlo algorithm (Gibbs Sampling) implemented via JAGS.
 }
 \details{
-The current version contains the main function \code{loadpexm} to load the new JAGS module. 
-Details about JAGS can be found in the \href{http://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf}{JAGS User Manual}.
-Download instructions are presented in the home page given by this \href{http://mcmc-jags.sourceforge.net}{link}. 
-Details about \pkg{pexm} and the piecewise exponential distribution can be found in \emph{Mayrink, Duarte and Demarqui (2020)}.
+The current version contains the main function \code{loadpexm} to load the proposed JAGS module. 
+Details about JAGS can be found in the \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf}{JAGS User Manual}.
+Download instructions are presented in the home page given by this \href{http://mcmc-jags.sourceforge.io}{link}. 
+Details about \pkg{pexm} and the piecewise exponential model can be found in \emph{Mayrink et al. (2020)}.
 }
 \references{
-arXiv:2004.12359 (\href{https://arxiv.org/abs/2004.12359}{Mayrink, Duarte and Demarqui; 2020})
+arXiv:2004.12359 (\href{https://arxiv.org/abs/2004.12359}{Mayrink et al.; 2020})
 }
 \seealso{
 \code{\link{loadpexm}}

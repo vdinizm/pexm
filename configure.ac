@@ -20,8 +20,7 @@ AC_PREFIX_PROGRAM(jags)
 #environment variable JAGS_INCLUDE
 
 AC_ARG_WITH([jags-include],
-            AC_HELP_STRING([--with-jags-include=INCLUDE_PATH],
-                           [the location of JAGS header files]),
+            AS_HELP_STRING([--with-jags-include=INCLUDE_PATH],[the location of JAGS header files]),
             [jags_include_path=$withval])
 if test [ -n "$jags_include_path" ] ; then
    JAGS_INCLUDE=${jags_include_path}
@@ -62,8 +61,7 @@ fi
 #environment variable JAGS_LIBS
 
 AC_ARG_WITH([jags-lib],
-            AC_HELP_STRING([--with-jags-lib=LIB_PATH],
-                           [the location of the JAGS library]),
+            AS_HELP_STRING([--with-jags-lib=LIB_PATH],[the location of the JAGS library]),
             [jags_lib_path=$withval])
 if test [ -n "$jags_lib_path" ] ; then
    JAGS_LIB=$jags_lib_path
@@ -82,8 +80,7 @@ fi
 # the DSO for rjags. Suggested by Doug Bates, April 2011.
 
 AC_ARG_ENABLE([rpath],
-            AC_HELP_STRING([--enable-rpath],
-                           [Hard link the location of the JAGS library]))
+            AS_HELP_STRING([--enable-rpath],[Hard link the location of the JAGS library]))
 if test [ "x$enable_rpath" = "xyes"]; then
    JAGS_RPATH="-Wl,-rpath ${JAGS_LIB}"
 fi
@@ -101,4 +98,5 @@ AC_SUBST(JAGS_INCLUDE)
 AC_SUBST(JAGS_LIB)
 AC_SUBST(JAGS_RPATH)
 
-AC_OUTPUT(src/Makevars)
+AC_CONFIG_FILES([src/Makevars])
+AC_OUTPUT

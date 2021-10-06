@@ -9,4 +9,6 @@ PE = Piecewise Exponential.
 
 Version 1.0.0: This is the first version of the package.
 
-
+Version 1.0.1: It includes two simple updates: 
+               (i) Warning correction for the Linux system. 
+               (ii) URL correction in few references. 
