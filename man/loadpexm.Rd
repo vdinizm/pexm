@@ -19,7 +19,7 @@ Function to load the Just Another Gibbs Sampling (JAGS) module \code{pexm} into 
 \details{
 The main purpose of the present function is to load the target JAGS module \pkg{pexm} into the R environment. 
 The pexm module allows the application of the Piecewise Exponential (PE) distribution in any Bayesian model implemented through JAGS.  
-In order to apply this loading routine, it is necessary to have \href{http://mcmc-jags.sourceforge.net}{JAGS} installed in the computer.
+In order to apply this loading routine, it is necessary to have \href{https://mcmc-jags.sourceforge.io}{JAGS} installed in the computer.
 The supporting package \pkg{rjags} is also required and it should have been automatically installed together with \pkg{pexm}. 
 Important remark for Windows users: the JAGS version 4.3.0 is the one considered in the present implementation of \pkg{pexm}. 
 If working with another version, one must download the source code of \pkg{pexm} and then modify the file "Makevars.win" (directory \code{src}). 

@@ -12,7 +12,7 @@ the corresponding Markov Chain Monte Carlo algorithm (Gibbs Sampling) implemente
 \details{
 The current version contains the main function \code{loadpexm} to load the proposed JAGS module. 
 Details about JAGS can be found in the \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf}{JAGS User Manual}.
-Download instructions are presented in the home page given by this \href{http://mcmc-jags.sourceforge.io}{link}. 
+Download instructions are presented in the home page given by this \href{https://mcmc-jags.sourceforge.io}{link}. 
 Details about \pkg{pexm} and the piecewise exponential model can be found in \emph{Mayrink et al. (2020)}.
 }
 \references{
