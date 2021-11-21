@@ -1,7 +1,7 @@
 # pexm
 <code>R</code> package to load the <code>JAGS</code> module pexm.
 
-<strong>Description</strong>: The Piecewise Exponencial (PE) distribution is not available in <code>JAGS</code>, therefore, many applications in survival analysis assuming a semiparametric modeling based on a piecewise constant hazard must consider a zeros-trick strategy to deal with the MCMC algorithm related to the Bayesian framework. The present <code>R</code> package provides a <code>JAGS</code> module containing distribution and related functions for the random variable <em>T ~ PE(lambda, tau)</em>, where <em>lambda</em> is the vector of failure rates specified for different intervals in the time scale and <em>tau</em> is the vector defining a grid partitioning the time line related to the application. All details about the PE distribution and the proposed <code>pexm</code> module can be found in <a href="https://arxiv.org/abs/2004.12359"><em>Mayrink et al. (2020)</em></a>.
+<strong>Description</strong>: The Piecewise Exponencial (PE) distribution is not available in <code>JAGS</code>, therefore, many applications in survival analysis assuming a semiparametric modeling based on a piecewise constant hazard must consider a zeros-trick strategy to deal with the MCMC algorithm related to the Bayesian framework. The present <code>R</code> package provides a <code>JAGS</code> module containing distribution and related functions for the random variable <em>T ~ PE(lambda, tau)</em>, where <em>lambda</em> is the vector of failure rates specified for different intervals in the time scale and <em>tau</em> is the vector defining a grid partitioning the time line related to the application. All details about the PE distribution and the proposed <code>pexm</code> module can be found in <a href="https://www.jstatsoft.org/article/view/v100i08"><em>Mayrink et al. (2021)</em></a>.
 
 <hr />
 <strong>Authors</strong>: Vinícius D. Mayrink, João D. N. Duarte and Fábio N. Demarqui.
@@ -9,7 +9,7 @@
 Departamento de Estatística, ICEx, Universidade Federal de Minas Gerais, Av. Antônio Carlos, 6627, Belo Horizonte, MG, Brazil, 31270-901.
 <hr />
 
-<li> <a href="https://arxiv.org/abs/2004.12359"><em>arXiv:2004.12359</em></a> Mayrink VD, Duarte JDN and Demarqui FN (2020). pexm: a JAGS module for applications involving the piecewise exponential distribution (preprint).</li>
+<li> <a href="https://www.jstatsoft.org/article/view/v100i08"><em>DOI:10.18637/jss.v100.i08</em></a> Mayrink VD, Duarte JDN and Demarqui FN (2021). pexm: a JAGS module for applications involving the piecewise exponential distribution, Journal of Statistical Software, 100, 8, 1-28.</li>
 <hr />
 
 <strong>Repositories</strong>: the source code of <code>pexm</code> is open for free access in 
