@@ -12,12 +12,12 @@
 #' If working with another version, one must download the source code of \pkg{pexm} and then modify the file "Makevars.win" (directory \code{src}). 
 #' In this case, simply adapt the path in \code{JAGS_ROOT} with the correct version number. 
 #' In order to build the present package, the source code of \pkg{runjags} (\emph{Denwood; 2016}) was used as an example. Details about \pkg{pexm} and 
-#' the piecewise exponential model can be found in \emph{Mayrink et al. (2020)}.   
+#' the piecewise exponential model can be found in \emph{Mayrink et al. (2021)}.   
 #' 
 #' @references
 #' DOI:10.18637/jss.v071.i09 (\href{https://www.jstatsoft.org/article/view/v071i09}{Denwood; 2016})
 #' 
-#' arXiv:2004.12359 (\href{https://arxiv.org/abs/2004.12359}{Mayrink et al.; 2020})
+#' DOI:10.18637/jss.v100.i08 (\href{https://www.jstatsoft.org/article/view/v100i08}{Mayrink et al.; 2021})  
 #'
 #' @seealso
 #' \code{\link{pexm}}

@@ -1,0 +1,19 @@
+bibentry(bibtype = "Article",
+  title        = "{pexm}: A {JAGS} Module for Applications Involving the Piecewise Exponential Distribution",
+  author       = c(person(given = c("Vin\\'{i}cius", "D."),
+                          family = "Mayrink",
+                          email = "vdm@est.ufmg.br"),
+                   person(given = c("Jo\\~{a}o", "Daniel", "N."),
+                          family = "Duarte"),
+                   person(given = c("F\\'{a}bio", "N."),
+                          family = "Demarqui")),
+  journal      = "Journal of Statistical Software",
+  year         = "2021",
+  volume       = "100",
+  number       = "8",
+  pages        = "1--28",
+  doi          = "10.18637/jss.v100.i08",
+
+  header       = "To cite pexm in publications use:"
+)
+
