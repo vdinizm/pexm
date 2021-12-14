@@ -14,3 +14,5 @@ Version 1.0.1: It includes two simple updates:
                (ii) URL correction in few references. 
                
 Version 1.1.1: Version released with updated citation information to indicate the corresponding research article published in the Journal of Statistical Software.
+
+Version 1.1.2: Version includes a ".ucrt" file so that the package is updated for R-devel/R 4.2 to work on Windows.
