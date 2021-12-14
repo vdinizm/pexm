@@ -586,10 +586,10 @@ S["LIBOBJS"]=""
 S["JAGS_RPATH"]=""
 S["JAGS_LIB"]="/usr/lib"
 S["JAGS_INCLUDE"]="/usr/include/JAGS"
-S["ac_ct_CC"]="gcc -std=gnu99"
-S["CFLAGS"]="-g -O2 -fdebug-prefix-map=/build/r-base-QwogzP/r-base-4.1.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURC"\
+S["ac_ct_CC"]="gcc -std=gnu99 -std=gnu11"
+S["CFLAGS"]="-g -O2 -fdebug-prefix-map=/build/r-base-i2PIHO/r-base-4.1.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURC"\
 "E=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always"
-S["CC"]="gcc -std=gnu99"
+S["CC"]="gcc -std=gnu99 -std=gnu11"
 S["EGREP"]="/usr/bin/grep -E"
 S["GREP"]="/usr/bin/grep"
 S["CXXCPP"]="g++ -std=gnu++14 -E"
@@ -598,7 +598,7 @@ S["EXEEXT"]=""
 S["ac_ct_CXX"]=""
 S["CPPFLAGS"]=""
 S["LDFLAGS"]=""
-S["CXXFLAGS"]="-g -O2 -fdebug-prefix-map=/build/r-base-QwogzP/r-base-4.1.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURC"\
+S["CXXFLAGS"]="-g -O2 -fdebug-prefix-map=/build/r-base-i2PIHO/r-base-4.1.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURC"\
 "E=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always"
 S["CXX"]="g++ -std=gnu++14"
 S["ac_prefix_program"]="/usr/bin/jags"
