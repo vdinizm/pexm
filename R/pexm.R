@@ -7,7 +7,7 @@
 #' 
 #' @details 
 #' The current version contains the main function \code{loadpexm} to load the proposed JAGS module. 
-#' Details about JAGS can be found in the \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf}{JAGS User Manual}.
+#' Details about JAGS can be found in the \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf/download}{JAGS User Manual}.
 #' Download instructions are presented in the home page given by this \href{https://mcmc-jags.sourceforge.io}{link}. 
 #' Details about \pkg{pexm} and the piecewise exponential model can be found in \emph{Mayrink et al. (2021)}.
 #' 
@@ -18,6 +18,7 @@
 #' @docType package
 #' @name pexm
 #' @useDynLib pexm
+#' @aliases pexm-package
 #' 
 #' @references
 #' DOI:10.18637/jss.v100.i08 (\href{https://www.jstatsoft.org/article/view/v100i08}{Mayrink et al.; 2021})

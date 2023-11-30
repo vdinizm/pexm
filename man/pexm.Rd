@@ -3,6 +3,7 @@
 \docType{package}
 \name{pexm}
 \alias{pexm}
+\alias{pexm-package}
 \title{pexm: Loading a Just Another Gibbs Sampling Module for the Piecewise Exponential Distribution}
 \description{
 Load the Just Another Gibbs Sampling (JAGS) module "pexm". 
@@ -11,7 +12,7 @@ the corresponding Markov Chain Monte Carlo algorithm (Gibbs Sampling) implemente
 }
 \details{
 The current version contains the main function \code{loadpexm} to load the proposed JAGS module. 
-Details about JAGS can be found in the \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf}{JAGS User Manual}.
+Details about JAGS can be found in the \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/3.x/jags_user_manual.pdf/download}{JAGS User Manual}.
 Download instructions are presented in the home page given by this \href{https://mcmc-jags.sourceforge.io}{link}. 
 Details about \pkg{pexm} and the piecewise exponential model can be found in \emph{Mayrink et al. (2021)}.
 }
