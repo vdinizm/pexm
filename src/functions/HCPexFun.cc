@@ -10,7 +10,7 @@ namespace pexm {
     {}
 
     double HCPexFun::scalarEval (std::vector<double const *> const &args,
-                                 std::vector<unsigned int> const &dims) const
+                                 std::vector<unsigned long> const &dims) const
     {
       double const * x = args[0]; // x[0] > 0 = a[0].
       double const * lam = args[1];

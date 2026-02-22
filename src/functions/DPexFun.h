@@ -12,9 +12,9 @@ namespace pexm {
         public:
           DPexFun();
           double scalarEval(std::vector<double const *> const &args,
-                            std::vector<unsigned int> const &dims) const;
+                            std::vector<unsigned long> const &dims) const override;
           bool isScale(std::vector<bool> const &mask,
-                       std::vector<bool> const &fix) const;
+                       std::vector<bool> const &fix) const override;
     };
 
 }}

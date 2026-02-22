@@ -19,15 +19,15 @@ DPex::DPex() : VectorDist("dpex", 2)
 
 // Check if the given parameter values are in the allowed parameter space.
 bool DPex::checkParameterValue (vector<double const *> const &parameters,
-                                vector<unsigned int> const &lengths) const
+                                vector<unsigned long> const &lengths) const
 {
     double const * lam = parameters[0];
     double const * a = parameters[1];
-    int size = lengths[0]; // number of lambdas
+    unsigned long size = lengths[0]; // number of lambdas
 
     int testlam = (lam[0] < 0)? 1 : 0;
     int testa = (a[0] != 0)? 1 : 0;
-    for(int i=1; i < size; ++i) {
+    for(unsigned long i=1; i < size; ++i) {
        testlam = testlam + ((lam[i] < 0)? 1 : 0);
        testa = testa + ((a[i] < 0)? 1 : 0) + ((a[i-1] >= a[i])? 1 : 0);
     }
@@ -41,23 +41,22 @@ bool DPex::checkParameterValue (vector<double const *> const &parameters,
 // "parameters" = vector of parameters values of the distribution.
 // "lengths" = vector of parameter lengths in "parameters"
 //             (e.g. [2,3] means size param1 = 2, size param2 = 3).
-double DPex::logDensity(double const *x, unsigned int length, PDFType type,
+double DPex::logDensity(double const *x, PDFType type,
                         vector<double const *> const &parameters,
-                        vector<unsigned int> const &lengths,
-                        double const *lower, double const *upper) const
+                        vector<unsigned long> const &lengths) const
 {
     double const * lam = parameters[0]; 
     double const * a = parameters[1]; // grid: (a0=0,a1], (a1,a2],...,(ak,Inf)
-    int size = lengths[0]; // number of lambdas
+    unsigned long size = lengths[0]; // number of lambdas
 
-    int n = size-1;
-    for(int i=0; i < (size-1); ++i) {
+    unsigned long n = size-1;
+    for(unsigned long i=0; i < (size-1); ++i) {
         if(*x <= a[i+1]){ n = i; break; }
     }
 
     double Ht = 0;
     if(n > 0) {
-        for(int i=0; i < n; ++i) {
+        for(unsigned long i=0; i < n; ++i) {
           Ht = Ht + lam[i] * (a[i+1] - a[i]);
         }
     }
@@ -70,93 +69,26 @@ double DPex::logDensity(double const *x, unsigned int length, PDFType type,
 // "length" = size of the array x (if 1, x is a scalar).
 // "parameters" = vector of parameter values of the distribution.
 // "lengths" = vector of lengths of the arrays in "parameters".
-void DPex::randomSample(double *x, unsigned int length,
+void DPex::randomSample(double *x, 
                         std::vector<double const *> const &parameters,
-                        std::vector<unsigned int> const &lengths,
-                        double const *lower, double const *upper,
+                        std::vector<unsigned long> const &lengths,
                         RNG *rng) const
 {
   double const * lam = parameters[0];
   double const * a = parameters[1]; // grid
-  int size = lengths[0]; // number of lambdas
-  int n; double Ht; double lo = 0; double up = 1;
-
-  if(lower){
-      n = size-1;
-      for(int i=0; i < (size-1); ++i) {
-         if(*lower <= a[i+1]){ n = i; break; }
-      }
-      Ht = 0;
-      if(n > 0) {
-        for(int i=0; i < n; ++i) {
-          Ht = Ht + lam[i] * (a[i+1] - a[i]);
-        }
-      }
-      Ht = Ht + lam[n] * (*lower - a[n]);
-      lo = 1-exp(-Ht);
-  }
-  if(upper){
-      n = size-1;
-      for(int i=0; i < (size-1); ++i) {
-         if(*upper <= a[i+1]){ n = i; break; }
-      }
-      Ht = 0;
-      if(n > 0) {
-        for(int i=0; i < n; ++i) {
-          Ht = Ht + lam[i] * (a[i+1] - a[i]);
-        }
-      }
-      Ht = Ht + lam[n] * (*upper - a[n]);
-      up = 1-exp(-Ht);
-  }
-
-  if((up-lo)<0.0001){lo = 0; up = 1;}
+  unsigned long size = lengths[0]; // number of lambdas
 
   // F(t)= 1-S(t)= 1-exp{-H(t)}, H(t)= -log(1-F(t))
-  double w = -log(1-runif(lo, up, rng));
+  double w = -log(1-runif(0, 1, rng));
   double Htprev = 0;
-  n = size-1;
-  for(int i=0; i < (size-1); ++i) {
-     Ht = Htprev + lam[i]*(a[i+1]-a[i]);
+  long n = size-1;
+  for(unsigned long i=0; i < (size-1); ++i) {
+     double Ht = Htprev + lam[i]*(a[i+1]-a[i]);
      if(w <= Ht){ n = i; break; }
      Htprev = Ht;
   }
   if(lam[n]==0){ *x = a[n] + (w-Htprev)/0.0001; }
   else{ *x = a[n] + (w-Htprev)/lam[n]; } // if( lam[n] > 0)
-}
-
-// Return a typical value of the distribution. 
-// The meaning depends on the distribution (can be: mean, median or mode).
-// "x" = array to which the typical values are written.
-// "length" = size of the array x (if 1, x is a scalar).
-// "parameters" = vector of parameter values of the distribution.
-// "lengths" = vector of lengths of the arrays in "parameters".
-void DPex::typicalValue(double *x, unsigned int length,
-                        std::vector<double const *> const &parameters,
-                        std::vector<unsigned int> const &lengths,
-                        double const *lower, double const *upper) const
-{
-  double const * lam = parameters[0];
-  double const * a = parameters[1];
-  double w = -log(0.5); // H(t) related to the median
-  int size = lengths[0]; // number of lambdas
-
-  double Ht;
-  double Htprev = 0;
-  int n = size-1;
-  for(int i=0; i < (size-1); ++i) {
-     Ht = Htprev + lam[i]*(a[i+1]-a[i]);
-     if(w <= Ht){ n = i; break; }
-     Htprev = Ht;
-  }
-  if(lam[n]==0){ *x = a[n] + (w-Htprev)/0.0001; }
-  else{ *x = a[n] + (w-Htprev)/lam[n]; } // if( lam[n] > 0 )
-}
-
-// Indicator: distribution can be bounded.
-bool DPex::canBound() const
-{
-  return true;
 }
 
 // Check if the distribution is discrete valued.
@@ -172,7 +104,7 @@ bool DPex::isSupportFixed(vector<bool> const &fixmask) const
 }
 
 // Check if the values in "lengths" are consistent; size(lambda)=size(grid)?
-bool DPex::checkParameterLength(vector<unsigned int> const &lengths) const
+bool DPex::checkParameterLength(vector<unsigned long> const &lengths) const
 {
   return lengths[0] == lengths[1];
 }
@@ -180,20 +112,18 @@ bool DPex::checkParameterLength(vector<unsigned int> const &lengths) const
 // Set the size of "*x".
 // In some distributions, this can be computed based on the values in "lengths",
 // for example, the size of mu in a Multiv.Normal.
-unsigned int DPex::length(vector<unsigned int> const &lengths) const
+unsigned long DPex::length(vector<unsigned long> const &lengths) const
 {
     return 1; // size of the array "*x" (length = 1 means "scalar")
 }
 
 // Returns the support of the unbounded distribution
-void DPex::support(double *lower, double *upper, unsigned int length,
+void DPex::support(double *lower, double *upper, 
                    vector<double const *> const &par,
-                   vector<unsigned int> const &lengths) const
+                   vector<unsigned long> const &lengths) const
 {
-  for (unsigned int i = 0; i < length; ++i) {
-    lower[i] = 0;
-    upper[i] = JAGS_POSINF;
-  }
+    *lower = 0;
+    *upper = JAGS_POSINF;
 }
 
 }}

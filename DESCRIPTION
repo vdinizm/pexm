@@ -6,7 +6,8 @@ Authors@R: c(person(given = "Vinicius", family = "Mayrink", role = c("aut","cre"
 	     person(given = "Fabio", family = "Demarqui", role = c("ctb"), comment = c(ORCID = "0000-0001-9236-1986")))
 Version: 1.1.3
 Description: Load the Just Another Gibbs Sampling (JAGS) module 'pexm'. The module provides the tools to work with the Piecewise Exponential (PE) distribution in a Bayesian model with the corresponding Markov Chain Monte Carlo algorithm (Gibbs Sampling) implemented via JAGS. Details about the module implementation can be found in Mayrink et al. (2021) <doi:10.18637/jss.v100.i08>.
-Depends: coda, rjags
+SystemRequirements: JAGS (>= 5.0.0)
+Depends: coda, rjags (>= 5-1)
 Imports: msm
 Encoding: UTF-8
 License: GPL-3

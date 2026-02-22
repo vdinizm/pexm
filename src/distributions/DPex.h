@@ -10,36 +10,28 @@ class DPex : public VectorDist // vector distribution class
 {
   public:
     DPex(); // constructor
-    double logDensity(double const *x, unsigned int length, PDFType type,
+    double logDensity(double const *x, PDFType type,
                       std::vector<double const *> const &parameters,
-                      std::vector<unsigned int> const &lengths,
-                      double const *lower, double const *upper) const;
-    void randomSample(double *x, unsigned int length,
+                      std::vector<unsigned long> const &lengths) const override;
+    void randomSample(double *x, 
                       std::vector<double const *> const &parameters,
-                      std::vector<unsigned int> const &lengths,
-                      double const *lower, double const *upper,
-                      RNG *rng) const;
-    void typicalValue(double *x, unsigned int length,
-                      std::vector<double const *> const &parameters,
-                      std::vector<unsigned int> const &lengths,
-                      double const *lower, double const *upper) const;
+                      std::vector<unsigned long> const &lengths,
+                      RNG *rng) const override;
     /** Check if the given parameter values are in the allowed parameter space */
     bool checkParameterValue(std::vector<double const*> const &parameters,
-                             std::vector<unsigned int> const &lengths) const;
-    /** Indicate whether the distribution can be bounded */
-    bool canBound() const;
+                             std::vector<unsigned long> const &lengths) const override;
     /** Check if the distribution is discrete valued */
-    bool isDiscreteValued(std::vector<bool> const &mask) const;
+    bool isDiscreteValued(std::vector<bool> const &mask) const override;
     /** Check if upper/lower limits of the support of the distribution are fixed */
-    bool isSupportFixed(std::vector<bool> const &fixmask) const;
+    bool isSupportFixed(std::vector<bool> const &fixmask) const override;
     /** Check if the values in "lengths" are consistent; size(lambda)=size(grid)? */
-    bool checkParameterLength(std::vector<unsigned int> const &lengths) const;
+    bool checkParameterLength(std::vector<unsigned long> const &lengths) const override;
     /** Identify the size of the array "*x" (length = 1 means "scalar") */
-    unsigned int length(std::vector<unsigned int> const &lengths) const;
+    unsigned long length(std::vector<unsigned long> const &lengths) const override;
     /** Returns the support of the unbounded distribution */
-    void support(double *lower, double *upper, unsigned int length,
+    void support(double *lower, double *upper, 
                  std::vector<double const *> const &parameters,
-                 std::vector<unsigned int> const &lengths) const;
+                 std::vector<unsigned long> const &lengths) const override;
 };
 
 }}
