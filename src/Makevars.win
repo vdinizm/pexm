@@ -1,16 +1,29 @@
-##############################################################################################################
-# This Makevars.win (Windows) is based on similar files taken as examples from the packages runjags and rjags.
+#  This file is based on R package JAGSmodule file src/Makevars.win
+#  Copyright (C) 2026 Matt Denwood
 #
-# Remark: The user must adapt the JAGS_ROOT variable below when:
-#         - the JAGS version is not 4.3.0;
-#         - JAGS is not installed in the standard location "c:\Program Files\JAGS". 
-##############################################################################################################
+#  This file can be used (unmodified) by any R package wishing to implement
+#  an inbuilt JAGS module. The only difference to the Makevars file is that
+#  we must ensure immediate evaluation of the LIBS/CXXFLAGS/CPPFLAGS using
+#  GNU make extensions.
+#
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License version
+#  2 as published by the Free Software Foundation.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  A copy of the GNU General Public License is available at
+#  http://www.r-project.org/Licenses/
 
-JAGS_ROOT ?= c:\progra~1\JAGS\JAGS-4.3.0
-JAGS_ROOT ?= "/c/progra~1/JAGS/JAGS-4.3.0"
+JAGS_LIBS := $(shell "$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" -e "rjags::pkg.compile.flags('LIBS')")
+JAGS_CXXFLAGS := $(shell "$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" -e "rjags::pkg.compile.flags('CXXFLAGS')")
+JAGS_CPPFLAGS := $(shell "$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" -e "rjags::pkg.compile.flags('CPPFLAGS')")
 
-PKG_CXXFLAGS = -D_GLIBCXX_USE_CXX11_ABI=0
-PKG_CPPFLAGS=-I"$(JAGS_ROOT)/include"
-PKG_LIBS=-L"$(JAGS_ROOT)/${R_ARCH}/bin" -ljrmath-0 -ljags-4
+PKG_LIBS = $(JAGS_LIBS)
+PKG_CXXFLAGS = $(JAGS_CXXFLAGS)
+PKG_CPPFLAGS = $(JAGS_CPPFLAGS)
+
 OBJECTS = functions/DPexFun.o functions/HCPexFun.o functions/HPexFun.o functions/PPexFun.o functions/QPexFun.o distributions/DPex.o init.o pexm.o
-
